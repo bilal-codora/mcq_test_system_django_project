@@ -1,0 +1,17 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<h2>Exam Result: {{ attempt.exam.name }}</h2>
+<p>Score: {{ attempt.score }}%</p>
+<table class="table">
+  <tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th><th>Explanation</th></tr>
+  {% for ans in answers %}
+    <tr>
+      <td>{{ ans.question.text }}</td>
+      <td>Option {{ ans.selected_option }}</td>
+      <td>Option {{ ans.question.correct_option }}</td>
+      <td>{{ ans.question.explanation }}</td>
+    </tr>
+  {% endfor %}
+</table>
+<a href="{% url 'student:performance' %}" class="btn btn-info">View Performance</a>
+{% endblock %}

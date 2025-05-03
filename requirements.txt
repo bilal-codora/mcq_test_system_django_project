@@ -1,0 +1,7 @@
+﻿Django>=4.0
+django_jazzmin
+djangorestframework
+matplotlib
+pandas
+numpy
+spacy

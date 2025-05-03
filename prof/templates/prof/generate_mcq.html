@@ -1,0 +1,18 @@
+ {% extends 'portal/base.html' %}
+{% block content %}
+<h2>Generate MCQs from Text</h2>
+<form method="post" action="{% url 'prof:generate_mcq' %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="text">Input Text:</label>
+    <textarea name="text" class="form-control" rows="5"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="num_questions">Number of Questions:</label>
+    <input type="number" name="num_questions" class="form-control" value="5">
+  </div>
+  <button type="submit" class="btn btn-primary">Generate</button>
+</form>
+{% endblock %}
+
+

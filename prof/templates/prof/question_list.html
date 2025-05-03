@@ -1,0 +1,20 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<h2>Questions</h2>
+<p><a class="btn btn-success" href="{% url 'prof:add_question' %}">Add New Question</a></p>
+<table class="table table-striped">
+  <tr><th>ID</th><th>Text</th><th>Subject</th><th>Difficulty</th><th>Actions</th></tr>
+  {% for q in questions %}
+  <tr>
+    <td>{{ q.id }}</td>
+    <td>{{ q.text|truncatechars:50 }}</td>
+    <td>{{ q.subject.name }}</td>
+    <td>{{ q.difficulty }}</td>
+    <td>
+      <a href="{% url 'prof:edit_question' q.id %}">Edit</a> |
+      <a href="{% url 'prof:delete_question' q.id %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
