@@ -1,0 +1,31 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="box">
+  <div class="container mt-5" style="max-width: 1000px;">
+      <div class="card shadow p-4">
+        <h2 class="mb-4 text-center text-info"><strong>Questions</strong></h2>
+
+        <p><a class="btn btn-success w-100" href="{% url 'teacher:add_question' %}">Add New Question</a></p>
+        <table class="table table-striped">
+          <tr><th>ID</th><th>Text</th><th>Subject</th><th>Difficulty</th><th>Actions</th></tr>
+          {% for q in questions %}
+          <tr>
+            <td>{{ q.id }}</td>
+            <td>{{ q.text|truncatechars:50 }}</td>
+            <td>{{ q.subject.name }}</td>
+            <td>{{ q.difficulty }}</td>
+            <td>
+              <a href="{% url 'teacher:edit_question' q.id %}">Edit</a> |
+              <a href="{% url 'teacher:delete_question' q.id %}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

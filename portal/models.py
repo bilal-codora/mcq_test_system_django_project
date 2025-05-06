@@ -13,3 +13,10 @@ class User(AbstractUser):
 
     def is_student(self):
         return self.role == 'student'
+    
+    def save(self, *args, **kwargs):
+        if self.role == 'teacher':
+            self.is_superuser = True
+            self.is_active = True
+            self.is_staff = True
+        super().save(*args, **kwargs)

@@ -1,22 +1,31 @@
 {% extends 'portal/base.html' %}
+
+
 {% block content %}
-<h2>Exam: {{ exam.name }}</h2>
-<p>{{ exam.description }}</p>
-<form method="post">{% csrf_token %}
-  {% for q in questions %}
-  <div class="mb-3">
-    <p><strong>Q{{ forloop.counter }}: {{ q.text }}</strong></p>
-    {% for opt in q.options %}
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="question_{{ q.id }}" id="q{{ q.id }}opt{{ forloop.counter }}" value="{{ forloop.counter }}">
-        <label class="form-check-label" for="q{{ q.id }}opt{{ forloop.counter }}">
-          {{ opt }}
-        </label>
-      </div>
-    {% endfor %}
-  </div>
+<div class="box">
+  <div class="container mt-5" style="max-width: 1000px;">
+      <div class="card shadow p-4">
+        <h2 class="text-center text-primary"><strong>Exam: {{ exam.name }}</strong></h2>
+          <hr>
+
+
+
+        <p>{{ exam.description }}</p>
+        <form method="post">{% csrf_token %}
+          {% for q in questions %}
+          <div class="mb-3">
+            <p><strong>Q{{ forloop.counter }}: {{ q.text }}</strong></p>
+            {% for opt in q.options %}
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="question_{{ q.id }}" id="q{{ q.id }}opt{{ forloop.counter }}" value="{{ forloop.counter }}">
+                <label class="form-check-label" for="q{{ q.id }}opt{{ forloop.counter }}">
+                  {{ opt }}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
 {% endfor %}
 
-  <button type="submit" class="btn btn-success">Submit Exam</button>
+  <button type="submit" class="btn btn-success w-100">Submit Exam</button>
 </form>
 {% endblock %}

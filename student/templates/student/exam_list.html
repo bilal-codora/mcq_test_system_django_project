@@ -1,15 +1,24 @@
 {% extends 'portal/base.html' %}
+
 {% block content %}
-<h2>Available Exams</h2>
-<table class="table">
-  <tr><th>Name</th><th>Subject</th><th>Time Limit</th><th>Action</th></tr>
-  {% for exam in exams %}
-    <tr>
-      <td>{{ exam.name }}</td>
-      <td>{{ exam.subject.name }}</td>
-      <td>{{ exam.time_limit }} min</td>
-      <td><a class="btn btn-primary" href="{% url 'student:take_exam' exam.id %}">Take Exam</a></td>
-    </tr>
-  {% endfor %}
-</table>
+<div class="box">
+  <div class="container mt-5" style="max-width: 1000px;">
+      <div class="card shadow p-4">
+        <h2 class="text-center text-danger"><strong>Available Exams</strong></h2>
+            <hr>
+       
+      <table class="table">
+        <tr><th>Name</th><th>Subject</th><th>Time Limit</th><th>Action</th></tr>
+        {% for exam in exams %}
+          <tr>
+            <td>{{ exam.name }}</td>
+            <td>{{ exam.subject.name }}</td>
+            <td>{{ exam.time_limit }} min</td>
+            <td><a class="btn btn-primary" href="{% url 'student:take_exam' exam.id %}">Take Exam</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+      </div>
+  </div>
+</div>
 {% endblock %}

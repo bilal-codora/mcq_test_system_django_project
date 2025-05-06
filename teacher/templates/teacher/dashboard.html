@@ -1,0 +1,17 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="box">
+    <div class="container mt-5" style="max-width: 700px;">
+        <div class="card shadow p-4">
+          <h2 class="text-center text-info"><strong>Teacher Dashboard</strong></h2>
+            <hr>
+            <p><a href="{% url 'teacher:exam_list' %}" class="btn btn-warning w-100 text-white">Manage Exams</a></p>
+            <p><a href="{% url 'teacher:generate_mcq' %}" class="btn btn-info w-100 text-white">Generate MCQs from Text</a></p>
+            <p><a href="{% url 'teacher:question_list' %}" class="btn btn-primary w-100 text-white">Manage Questions</a></p>
+           
+        </div>
+    </div>
+</div>
+{% endblock %}

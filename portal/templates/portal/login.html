@@ -1,8 +1,37 @@
 {% extends 'portal/base.html' %}
+{% load static %}
+{% load form_filters %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="post">{% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<div class="box">
+  <div class="container mt-5" style="max-width: 500px;">
+    <div class="card shadow p-4">
+      <h2 class="mb-4 text-center text-info"><strong>Login</strong></h2>
+  
+      <form method="post" novalidate>
+        {% csrf_token %}
+  
+        <div class="mb-3">
+          <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+          {{ form.username|add_class:"form-control" }}
+          {% if form.username.errors %}
+            <div class="text-danger small">{{ form.username.errors|striptags }}</div>
+          {% endif %}
+        </div>
+  
+        <div class="mb-3">
+          <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+          {{ form.password|add_class:"form-control" }}
+          {% if form.password.errors %}
+            <div class="text-danger small">{{ form.password.errors|striptags }}</div>
+          {% endif %}
+        </div>
+  
+        <button type="submit" class="btn btn-info w-100 text-white">Login</button>
+      </form>
+    </div>
+  </div>
+
+  
+</div>
 {% endblock %}

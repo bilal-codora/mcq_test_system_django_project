@@ -1,0 +1,28 @@
+ {% extends 'portal/base.html' %}
+ {% load static %}
+
+ {% block content %}
+ 
+ <div class="box">
+   <div class="container mt-5" style="max-width: 1200px;">
+       <div class="card shadow p-4">
+         <h2 class="mb-4 text-center text-info"><strong>Generate MCQs from Text</strong></h2>
+
+        <form method="post" action="{% url 'teacher:generate_mcq' %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="text">Input Text:</label>
+            <textarea name="text" class="form-control" rows="5"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="num_questions">Number of Questions:</label>
+            <input type="number" name="num_questions" class="form-control" value="10">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Generate</button>
+        </form>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+

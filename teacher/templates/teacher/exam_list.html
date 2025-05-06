@@ -1,0 +1,28 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="box">
+  <div class="container mt-5" style="max-width: 1000px;">
+      <div class="card shadow p-4">
+        <h2 class="mb-4 text-center text-info"><strong>Exams</strong></h2>
+
+        <p><a class="btn btn-success w-100" href="{% url 'teacher:create_exam' %}">Create New Exam</a></p>
+        <table class="table table-bordered">
+          <tr><th>ID</th><th>Name</th><th>Subject</th><th>Actions</th></tr>
+          {% for exam in exams %}
+          <tr>
+            <td>{{ exam.id }}</td>
+            <td>{{ exam.name }}</td>
+            <td>{{ exam.subject.name }}</td>
+            <td>
+              <a href="{% url 'teacher:exam_results' exam.id %}">Results</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+  </div>
+</div>
+{% endblock %}

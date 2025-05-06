@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from prof.models import Exam, Question
+from teacher.models import Exam, Question
 
 class ExamAttempt(models.Model):
     student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

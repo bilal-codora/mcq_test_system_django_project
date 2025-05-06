@@ -1,19 +1,30 @@
 {% extends 'portal/base.html' %}
+{% load static %}
+
 {% block content %}
-<h2>Your Performance</h2>
-{% if chart %}
-<img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Performance Chart">
-{% else %}
-<p>No exam attempts yet.</p>
-{% endif %}
-<table class="table">
-  <tr><th>Exam</th><th>Score</th><th>Date</th></tr>
-  {% for att in attempts %}
-    <tr>
-      <td>{{ att.exam.name }}</td>
-      <td>{{ att.score }}%</td>
-      <td>{{ att.timestamp }}</td>
-    </tr>
-  {% endfor %}
-</table>
+<div class="box">
+    <div class="container mt-5" style="max-width: 1000px;">
+        <div class="card shadow p-4">
+          <h2 class="text-center text-info"><strong>Your Performance</strong></h2>
+            <hr>
+
+
+          {% if chart %}
+          <img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Performance Chart">
+          {% else %}
+          <p>No exam attempts yet.</p>
+          {% endif %}
+          <table class="table">
+            <tr><th>Exam</th><th>Score</th><th>Date</th></tr>
+            {% for att in attempts %}
+              <tr>
+                <td>{{ att.exam.name }}</td>
+                <td>{{ att.score }}%</td>
+                <td>{{ att.timestamp }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

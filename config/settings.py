@@ -1,14 +1,14 @@
 import os
 from pathlib import Path
 
-# Build paths inside the project
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'replace-this-with-a-secure-secret-key'
 DEBUG = True
 ALLOWED_HOSTS = []
 
-# Application definition
+
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -17,9 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portal',    # User auth and base views
-    'prof',      # Teacher app
-    'student',   # Student app
+    'portal', 
+    'teacher',
+    'student',
 ]
 
 MIDDLEWARE = [
@@ -36,7 +36,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # global templates
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -54,7 +54,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_mcq',
+        'NAME': 'test_mcq_db',
         'USER': 'mcq_user',
         'PASSWORD': 'mcq_password',
         'HOST': '127.0.0.1',
@@ -66,13 +66,13 @@ print("DATABASES =", DATABASES)
 
 # Authentication
 AUTH_USER_MODEL = 'portal.User'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = 'portal:login'
+# LOGIN_URL = 'login'
 
 # Static files
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
