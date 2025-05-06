@@ -48,4 +48,3 @@ Teachers and students will register and create profiles. Teachers will have acce
 
 Tools and Technologies: Python (Django): Backend web framework for handling user interactions and test management. Jupyter Notebook: For initial data analysis and model development. PostgreSQL / MySQL: Database to store MCQs, user data, and test history. NLTK / Spacy: For Natural Language Processing to generate MCQs from text input. Bootstrap / ReactJS: For building the frontend user interface. Matplotlib / Plotly: To generate graphs and visualizations for performance tracking.
 
-Supervisor: Name: Muhammad Kaleemullah Email ID: m.kaleem@vu.edu.pk Skype ID: kaleembhatti561
